@@ -18,9 +18,16 @@ function buttonClickListener(event) {
     console.log("  - event.target:", event.target)
     var box = event.currentTarget.parentNode
     box.classList.toggle('highlighted')
+    event.stopPropagation()
 }
 
 var buttons = document.getElementsByClassName('in-box-button')
 for (var i = 0; i < buttons.length; i++) {
     buttons[i].addEventListener('click', buttonClickListener)
 }
+
+var link = document.getElementById('website-link')
+link.addEventListener('click', function (event) {
+    console.log("== The link was clicked")
+    event.preventDefault()
+})
